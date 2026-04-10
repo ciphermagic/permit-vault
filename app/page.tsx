@@ -1,6 +1,20 @@
+'use client';
+
 import Link from 'next/link';
+import { useAccount, useChainId } from 'wagmi';
+
+const NETWORK_STATUS: Record<number, string> = {
+  31337: '当前网络：本地 Anvil',
+  11155111: '当前网络：Sepolia',
+};
 
 export default function Home() {
+  const { isConnected } = useAccount();
+  const chainId = useChainId();
+  const networkStatus = isConnected
+    ? (NETWORK_STATUS[chainId] ?? `当前网络：Chain ID ${chainId}`)
+    : '当前网络：未连接钱包';
+
   return (
     <>
       <style>{`
@@ -229,7 +243,7 @@ export default function Home() {
           </div>
           <div className='status'>
             <span className='dot' />
-            本地网络运行中
+            {networkStatus}
           </div>
         </nav>
 
@@ -344,7 +358,7 @@ export default function Home() {
         <footer>
           <span>PermitVault · MIT License</span>
           <div className='foot-links'>
-            <a href='https://github.com' target='_blank' rel='noreferrer'>
+            <a href='https://github.com/ciphermagic/permit-vault' target='_blank' rel='noreferrer'>
               GitHub
             </a>
             <a href='/permit-vault'>进入应用</a>

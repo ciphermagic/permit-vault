@@ -6,8 +6,15 @@ import '../src/PermitERC20.sol';
 import '../src/RebaseToken.sol';
 import '../src/PermitVault.sol';
 
+/**
+forge script script/DeploySepolia.s.sol:DeploySepoliaScript \
+  --rpc-url $SEPOLIA_RPC_URL \
+  --broadcast \
+  --verify \
+  --etherscan-api-key $ETHERSCAN_API_KEY \
+  -vvvv
+ */
 contract DeploySepoliaScript is Script {
-  // Permit2 官方地址，所有 EVM 链通用
   address constant PERMIT2 = 0x000000000022D473030F116dDEE9F6B43aC78BA3;
 
   function run() external {

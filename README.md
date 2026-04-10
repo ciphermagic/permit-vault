@@ -18,6 +18,27 @@
 
 ---
 
+## 🚀 线上部署（Sepolia 测试网）
+
+应用当前运行在 Sepolia 测试网络，所有合约均已完成部署并可在链上验证。
+
+建议优先通过主域名访问，以获得更稳定的连接体验；如遇网络或区域访问问题，可使用 Vercel 备用入口。
+
+| 合约               | 地址                                                                                                |
+| ---------------- | ------------------------------------------------------------------------------------------------- |
+| PermitVault      | [0xB3EC2...EC84](https://sepolia.etherscan.io/address/0xB3EC2Eb48198a22f62bf86d2c657D37a6985EC84) |
+| PermitERC20（STK） | [0xCD6E...c43](https://sepolia.etherscan.io/address/0xCD6E773F12a98187E9ceb821558f7574E646ac43)   |
+| RebaseToken（RDT） | [0x559A...CaF](https://sepolia.etherscan.io/address/0x559A800f03783ababc4D617eD7a0022544A70CaF)   |
+| Permit2          | [0x0000...BA3](https://sepolia.etherscan.io/address/0x000000000022D473030F116dDEE9F6B43aC78BA3)   |
+
+👉 **主入口（推荐）**
+🔗 [https://permit-vault.ciphermagic.asia/](https://permit-vault.ciphermagic.asia/)
+
+👉 **备用访问（Vercel）**
+🔗 [https://permit-vault.vercel.app/](https://permit-vault.vercel.app/)
+
+---
+
 ## ✨ 功能
 
 * ⚡ **Gasless Deposit**：基于 Permit2，一次 approve 后永久免授权交易
