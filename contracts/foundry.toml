@@ -1,0 +1,37 @@
+[profile.default]
+via_ir          = true
+optimizer       = true
+optimizer_runs  = 200
+src             = "src"
+out             = "out"
+libs            = ["lib"]
+solc            = "0.8.34"
+
+fs_permissions  = [
+    { access = "write", path = "./deployments"    },
+    { access = "read",  path = "./permit2.bytecode" }
+]
+
+# ── Permit2 独立编译 profile ──────────────────────────────
+# Permit2 源码锁定 =0.8.17，无法与主项目混编
+# 用法：forge build --profile permit2  （只需执行一次）
+# 产物写入 out-permit2/，由部署脚本通过 vm.readFileBinary 读取
+[profile.permit2]
+src            = "lib/permit2/src"
+out            = "out-permit2"
+libs           = ["lib"]
+solc           = "0.8.17"
+via_ir         = true
+optimizer      = true
+optimizer_runs = 200
+script         = "lib/permit2/src"   # 不编译 contracts/script/
+test           = "lib/permit2/src"   # 不编译 contracts/test/
+
+[rpc_endpoints]
+sepolia   = "${SEPOLIA_RPC_URL}"
+polygon   = "${POLYGON_RPC_URL}"
+local     = "http://127.0.0.1:8545"
+optimism  = "${OPTIMISM_RPC_URL}"
+
+[etherscan]
+sepolia = { key = "${ETHERSCAN_API_KEY}" }
